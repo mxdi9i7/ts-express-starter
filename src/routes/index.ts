@@ -1,16 +1,12 @@
 import { Router } from 'express';
-import { getAllUsers, addOneUser, updateOneUser, deleteOneUser } from './Users';
+import userRouter from '@routes/user';
+import authRouter from '@routes/auth';
+import postRouter from '@routes/post';
 
-
-// User-route
-const userRouter = Router();
-userRouter.get('/all', getAllUsers);
-userRouter.post('/add', addOneUser);
-userRouter.put('/update', updateOneUser);
-userRouter.delete('/delete/:id', deleteOneUser);
-
-
-// Export the base-router
 const baseRouter = Router();
-baseRouter.use('/users', userRouter);
+
+baseRouter.use('/auth', authRouter);
+baseRouter.use('/user', userRouter);
+baseRouter.use('/post', postRouter);
+
 export default baseRouter;
