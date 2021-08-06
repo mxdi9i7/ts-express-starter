@@ -17,7 +17,8 @@ const { BAD_REQUEST } = StatusCodes;
  *                              Set basic express settings
  ***********************************************************************************/
 
-connectToDatabase();
+// connectToDatabase();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -33,7 +34,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add APIs
-app.use('/', BaseRouter);
+app.get('/', (req, res) => res.json('OK'));
+// app.use('/', BaseRouter);
 
 // Print API errors
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
